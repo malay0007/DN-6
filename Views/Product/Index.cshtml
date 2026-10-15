@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DN_6.Models.Product>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    h2 {
+        text-align: center;
+        color: darkblue;
+        margin-top: 30px;
+    }
+
+    table {
+        width: 80%;
+        margin: 25px auto;
+        border-collapse: collapse;
+        background-color: white;
+    }
+
+    th {
+        background-color: darkblue;
+        color: white;
+        padding: 12px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #e6f2ff;
+    }
+
+    a {
+        color: blue;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: red;
+    }
+</style>
+
+<h2>Product Catalog</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>₹@product.Price</td>
+            <td>@product.Category</td>
+            <td>
+                <a asp-controller="Product"
+                   asp-action="Details"
+                   asp-route-id="@product.Id">
+                    View Details
+                </a>
+            </td>
+        </tr>
+    }
+</table>
